@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use app\Employee;
+use App\Employee;
 
 class EmployeeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -53,7 +57,8 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        //
+        $employee = Employee::find($id);
+        return view('employee.show', compact('employee'));
     }
 
     /**
@@ -64,7 +69,8 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $employee = Employee::find($id);
+        return view('employee.edit', compact('employee'));
     }
 
     /**
@@ -74,9 +80,15 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Employee $employee)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'address' => 'required',
+        ]);
+
+        $employee->update($request->all());
+        return redirect()->route('employee.index')->with('success', 'Data berhasil di update');
     }
 
     /**
@@ -85,8 +97,9 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Employee $employee)
     {
-        //
+        $employee->delete();
+        return redirect()->route('employee.index')->with('success', 'Data berhasil di update');
     }
 }

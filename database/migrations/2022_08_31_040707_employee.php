@@ -16,8 +16,13 @@ class Employee extends Migration
         Schema::create('employee', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->date('date_of_birth');
+            $table->string('gender');
             $table->string('address');
             $table->string('phone');
+            $table->string('employee_number');
+            $table->string('employee_status');
+            $table->string('departement');
             $table->timestamps();
         });
     }
@@ -29,6 +34,6 @@ class Employee extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('employee');
     }
 }

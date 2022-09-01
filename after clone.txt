@@ -1,0 +1,4 @@
+after clone, do this
+
+npm install to install node modules
+then npm run dev
