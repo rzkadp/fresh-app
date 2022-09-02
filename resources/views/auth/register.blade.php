@@ -42,6 +42,21 @@
                     @enderror
                   </div>
 
+                  <div class="form-group">
+                    <label for="role_id">Role Access</label>
+                    <select name="role_id" id="role_id" class="form-control @error('role_id') is-invalid @enderror" name="role_id" value="{{ old('role_id') }}" required autocomplete="role_id">
+                      <option value="1">Manager</option>
+                      <option value="2">Supervisor</option>
+                      <option value="3">Staff</option>
+                    </select>
+
+                    @error('role_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                  </div>
+
                   <div class="row">
                     <div class="form-group col-6">
                       <label for="password" class="d-block">Password</label>
@@ -55,18 +70,16 @@
                     </div>
                     <div class="form-group col-6">
                       <label for="password2" class="d-block">Password Confirmation</label>
-                      <div class="col-md-6">
-                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                    </div>
+                      <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                     </div>
                   </div>
 
-                  <div class="form-group">
+                  {{-- <div class="form-group">
                     <div class="custom-control custom-checkbox">
                       <input type="checkbox" name="agree" class="custom-control-input" id="agree">
                       <label class="custom-control-label" for="agree">I agree with the terms and conditions</label>
                     </div>
-                  </div>
+                  </div> --}}
 
                   <div class="form-group">
                     <button type="submit" class="btn btn-primary">

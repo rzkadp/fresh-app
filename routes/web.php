@@ -23,6 +23,10 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', function () {
+    return redirect('home');
+});
 
 Route::resource('/employee', 'EmployeeController');
+Route::resource('/transaction', 'TransactionController');
+Route::resource('/inventory', 'InventoryController');

@@ -74,6 +74,20 @@
   <script src="{{ asset('assets/modules/nicescroll/jquery.nicescroll.min.js') }}"></script>
   <script src="{{ asset('assets/modules/moment.min.js') }}"></script>
   <script src="{{ asset('assets/js/stisla.js') }}"></script>
+
+  <script>
+    $(document).ready(function() {
+        $(function($) {
+            let url = window.location.href;
+            $('ul li a').each(function() {
+                if (this.href === url) {
+                    $(this).closest('li').addClass('active');
+                    $(this).closest('.dropdown').addClass('active');
+                }
+            });
+        });
+    });
+  </script>
   
   <!-- JS Libraies -->
 
