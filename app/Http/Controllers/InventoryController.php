@@ -66,7 +66,8 @@ class InventoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $inventory = Inventory::find($id);
+        return view('inventory.show', compact('inventory'));
     }
 
     /**
@@ -77,7 +78,8 @@ class InventoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $inventory = Inventory::find($id);
+        return view('inventory.edit', compact('inventory'));
     }
 
     /**
@@ -87,9 +89,15 @@ class InventoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Inventory $inventory)
     {
-        //
+        $request->validate([
+            'item_code' => 'required',
+            'status' => 'required',
+        ]);
+
+        $inventory->update($request->all());
+        return redirect()->route('inventory.index')->with('success', 'Data berhasil di update');
     }
 
     /**

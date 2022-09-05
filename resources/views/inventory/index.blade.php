@@ -20,7 +20,7 @@
         <tbody>
             @foreach ($inventory as $i)
                 <tr>
-                    <td>{{ $i->id }}</td>
+                    <td>{{ $loop->iteration }}</td>
                     <td>{{ $i->item_code }}</td>
                     <td>{{ $i->description }}</td>
                     <td>{{ $i->status }}</td>
@@ -31,7 +31,7 @@
                             <a href="{{ route('inventory.edit', $i->id) }}" class="btn btn-primary"><i class="far fa-edit"></i></a>
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                            <button type="submit" class="btn btn-danger delete-confirm"><i class="fas fa-trash-alt"></i></button>
                         </form>
                     </td>
                 </tr>
@@ -44,10 +44,29 @@
 @endsection
 
 @push('page-scripts')
+
 <script>
     $(document).ready(function () {
-    $('#table').DataTable();
-});
+        $('#table').DataTable();
+    });
+
+    $('.delete-confirm').click(function(event) {
+        var form =  $(this).closest("form");
+        var name = $(this).data("name");
+        event.preventDefault();
+        swal({
+            title: `Are you sure you want to delete ${name}?`,
+            text: "If you delete this, it will be gone forever.",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+            form.submit();
+            }
+        });
+    });
 </script>
     
 @endpush
