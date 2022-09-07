@@ -15,14 +15,14 @@ class LineTransaction extends Migration
     {
         Schema::create('trx_line', function (Blueprint $table) {
             $table->id();
-            $table->string('employee_id');
             $table->string('trx_number');
-            $table->string('trx_code');
-            $table->date('trx_date');
-            $table->string('employee_name');
-            $table->string('employee_departement');
-            $table->string('user_entry');
-            $table->dateTime('keyin_date');
+            $table->string('line_number');
+            $table->string('item_id');
+            $table->string('item_code');
+            $table->string('description');
+            $table->string('qty');
+            $table->string('amount');
+            $table->string('uom');
             $table->timestamps();
         });
     }
@@ -34,6 +34,6 @@ class LineTransaction extends Migration
      */
     public function down()
     {
-        // Schema::dropIfExists('line_transaction');
+        Schema::dropIfExists('line_transaction');
     }
 }

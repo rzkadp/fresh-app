@@ -16,11 +16,9 @@ class HeaderTransaction extends Migration
         Schema::create('trx_header', function (Blueprint $table) {
             $table->id();
             $table->string('trx_number');
-            $table->string('item_id');
-            $table->string('line_number');
-            $table->string('qty');
-            $table->string('uom');
-            $table->string('unit_standard_price');
+            $table->dateTime('trx_date');
+            $table->string('user_insert');
+            $table->string('status');
             $table->timestamps();
         });
     }

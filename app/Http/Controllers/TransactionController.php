@@ -3,10 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Transaction;
+use Illuminate\Support\Facades\DB;
+use App\Header_trx;
 
 class TransactionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +19,8 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        return 'Test Trx';
+        $trx = DB::table('trx_header')->get();
+        return view('trx.index', compact('trx'));
     }
 
     /**
@@ -24,7 +30,7 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        //
+        return view('trx.add');
     }
 
     /**
@@ -35,7 +41,19 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'trx_number' => 'required',
+            'user_insert' => 'required',
+        ]);
+        Header_trx::create([
+            'trx_number' => $request->trx_number,
+            'trx_date' => date('Y-m-d'),
+            'user_insert'   => $request->user_insert,
+            'status'    => $request->status,
+            // 'qty'   => '0',
+            // 'uom'   => $request->uom,
+        ]);
+        return redirect()->route('transaction.index')->with('success', 'Data berhasil di input');
     }
 
     /**
@@ -78,8 +96,9 @@ class TransactionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Header_trx $transaction)
     {
-        //
+        $transaction->delete();
+        return redirect()->route('transaction.index')->with('success', 'Data berhasil di update');
     }
 }
