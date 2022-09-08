@@ -24,10 +24,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', function () {
-    return redirect('home');
+    return redirect('request');
 });
 
 Route::resource('/employee', 'EmployeeController');
 Route::resource('/transaction', 'TransactionController');
 Route::resource('/inventory', 'InventoryController');
-Route::resource('/order', 'OrderController');
+Route::resource('/request', 'RequestController');
