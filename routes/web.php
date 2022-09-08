@@ -30,3 +30,4 @@ Route::get('/', function () {
 Route::resource('/employee', 'EmployeeController');
 Route::resource('/transaction', 'TransactionController');
 Route::resource('/inventory', 'InventoryController');
+Route::resource('/order', 'OrderController');
