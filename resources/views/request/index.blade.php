@@ -1,4 +1,4 @@
-@extends('layout_frontend.master')
+@extends('layouts.master')
 
 @section('title', 'Order Entry')
 @section('header-title', 'Order Entry')

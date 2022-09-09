@@ -22,11 +22,14 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', function () {
-    return redirect('request');
+    return redirect('home');
 });
+// homepage route
+Route::get('/home', 'HomeController@index')->name('home');
 
+// dashboard admin route
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 Route::resource('/employee', 'EmployeeController');
 Route::resource('/transaction', 'TransactionController');
 Route::resource('/inventory', 'InventoryController');
