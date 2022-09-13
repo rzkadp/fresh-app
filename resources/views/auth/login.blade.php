@@ -10,7 +10,7 @@
         <div class="row">
           <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
             <div class="login-brand">
-              <img src="assets/img/stisla-fill.svg" alt="logo" width="100" class="shadow-light rounded-circle">
+              <img src="{{ asset('assets/img/stisla-fill.svg') }}" alt="logo" width="100" class="shadow-light rounded-circle">
             </div>
 
             <div class="card card-primary">
@@ -33,6 +33,13 @@
                   <div class="form-group">
                     <div class="d-block">
                     	<label for="password" class="control-label">{{ __('Password') }}</label>
+                      <div class="float-right">
+                        @if (Route::has('password.request'))
+                            <a class="text-small" href="{{ route('password.request') }}">
+                                {{ __('Forgot Your Password?') }}
+                            </a>
+                        @endif
+                      </div>
                     </div>
                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
@@ -44,7 +51,7 @@
                     @enderror
                   </div>
 
-                  <div class="form-group">
+                  {{-- <div class="form-group">
                     <div class="custom-control custom-checkbox">
                         <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
@@ -52,18 +59,18 @@
                             {{ __('Remember Me') }}
                         </label>
                     </div>
-                  </div>
+                  </div> --}}
 
                   <div class="form-group">
                     <button type="submit" class="btn btn-primary">
                         {{ __('Login') }}
                     </button>
                     
-                    @if (Route::has('password.request'))
+                    {{-- @if (Route::has('password.request'))
                         <a class="btn btn-link" href="{{ route('password.request') }}">
                             {{ __('Forgot Your Password?') }}
                         </a>
-                    @endif
+                    @endif --}}
                   </div>
                 </form>
               </div>

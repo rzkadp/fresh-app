@@ -12,8 +12,6 @@
             <div class="login-brand">
               <img src="assets/img/stisla-fill.svg" alt="logo" width="100" class="shadow-light rounded-circle">
             </div>
-
-            <a href="{{ route('login') }}" class="btn btn-sm btn-info mb-2">Back</a>
             <div class="card card-primary">
                 <div class="card-header">{{ __('Register') }}</div>
 
@@ -85,6 +83,11 @@
                     <button type="submit" class="btn btn-primary">
                         {{ __('Register') }}
                     </button>
+                    @if (Route::has('login'))
+                        <a class="btn btn-link" href="{{ route('login') }}">
+                            {{ __('Already have an Account? Sign in here!') }}
+                        </a>
+                    @endif
                   </div>
                 </form>
               </div>
