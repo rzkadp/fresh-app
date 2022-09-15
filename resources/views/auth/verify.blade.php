@@ -1,10 +1,16 @@
 @extends('layouts.app')
 
+@section('title', 'Access Denied')
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
+                <h1>403</h1>
+                <div class="page-description">
+                    You do not have access to this page.
+                </div>
                 <div class="card-header">{{ __('Verify Your Email Address') }}</div>
 
                 <div class="card-body">
