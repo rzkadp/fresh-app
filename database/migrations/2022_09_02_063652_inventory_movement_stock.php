@@ -33,6 +33,6 @@ class InventoryMovementStock extends Migration
      */
     public function down()
     {
-        //
+        schema::dropIfExists('inventory_movement_stock');
     }
 }

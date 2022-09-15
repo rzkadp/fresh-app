@@ -18,6 +18,7 @@
                 <ul class="dropdown-menu">
                   <li><a class="nav-link" href="{{ route('employee.index') }}">Employee</a></li>
                   <li><a class="nav-link" href="{{ route('inventory.index') }}">Inventory</a></li>
+                  <li><a class="nav-link" href="{{ route('menu.index') }}">Menu</a></li>
                 </ul>
               </li>
             @else

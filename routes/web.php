@@ -34,3 +34,4 @@ Route::resource('/employee', 'EmployeeController');
 Route::resource('/transaction', 'TransactionController');
 Route::resource('/inventory', 'InventoryController');
 Route::resource('/request', 'RequestController');
+Route::resource('/menu', 'MenuController');
