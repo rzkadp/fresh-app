@@ -41,14 +41,14 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="role_id">Role Access</label>
-                    <select name="role_id" id="role_id" class="form-control @error('role_id') is-invalid @enderror" name="role_id" value="{{ old('role_id') }}" required autocomplete="role_id">
+                    <label for="level_user">Level Access</label>
+                    <select name="level_user" id="level_user" class="form-control @error('level_user') is-invalid @enderror" name="level_user" value="{{ old('level_user') }}" required autocomplete="level_user">
                       <option value="1">Manager</option>
                       <option value="2">Supervisor</option>
                       <option value="3">Staff</option>
                     </select>
 
-                    @error('role_id')
+                    @error('level_user')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>

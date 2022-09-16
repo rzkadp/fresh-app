@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes(['verify' => true]);
 
 Route::get('/', function () {
-    return redirect('home');
+    return redirect('dashboard');
 });
 // homepage route
 Route::get('/home', 'HomeController@index')->name('home');

@@ -63,7 +63,8 @@ class MenuController extends Controller
      */
     public function show($id)
     {
-        //
+        $menu = Menu::find($id);
+        return view('menu.show', compact('menu'));
     }
 
     /**
@@ -74,7 +75,8 @@ class MenuController extends Controller
      */
     public function edit($id)
     {
-        //
+        $menu = Menu::find($id);
+        return view('menu.edit', compact('menu'));
     }
 
     /**
@@ -84,9 +86,15 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Menu $menu)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'link' => 'required',
+        ]);
+
+        $menu->update($request->all());
+        return redirect()->route('menu.index')->with('success', 'Data berhasil di update');
     }
 
     /**

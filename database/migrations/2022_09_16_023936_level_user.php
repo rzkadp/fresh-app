@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Inventory extends Migration
+class LevelUser extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class Inventory extends Migration
      */
     public function up()
     {
-        Schema::create('inventory', function (Blueprint $table) {
-            $table->id();
-            $table->string('item_code');
-            $table->string('description');
-            $table->string('qty');
-            $table->string('uom');
-            $table->date('import_date');
-            $table->string('status');
+        Schema::create('level_user', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->string('menu_access');
+            $table->string('submenu_access');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ class Inventory extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('inventory');
+        schema::dropIfExists('level_user');
     }
 }
