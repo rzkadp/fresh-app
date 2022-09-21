@@ -10,15 +10,15 @@
           <ul class="sidebar-menu">
             <li class="menu-header">Main Menu</li>
             <li><a class="nav-link" href="{{ route('dashboard') }}"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
-            {{-- <li><a class="nav-link" href="{{ route('request.index') }}"><i class="fa fa-cart-plus"></i> <span>Request</span></a></li> --}}
-            <?php
-              $menu = DB::table('menu')->whereIn('id', array(Auth::user()->menu_access))->get();
-            ?>
-            @foreach ($menu as $m)
+            <li><a class="nav-link" href="{{ route('request.index') }}"><i class="fa fa-cart-plus"></i> <span>Request</span></a></li>
+            {{-- <?php
+              // $menu = DB::table('menu')->whereIn('id', array(Auth::user()->menu_access))->get();
+            ?> --}}
+            {{-- @foreach ($menu as $m)
               <li><a class="nav-link" href="{{ $m->link }}"><i class="{{ $m->menu_icon }}"></i> <span>{{ $m->name }}</span></a></li>
-            @endforeach
+            @endforeach --}}
             
-            {{-- @if ( Auth::user()->level_user == 1 )
+            @if ( Auth::user()->level_user == 1 )
             <li class="menu-header">Admin Menu</li>
               <li><a class="nav-link" href="{{ route('transaction.index') }}"><i class="fas fa-dollar-sign"></i> <span>Transaction</span></a></li>
               <li class="dropdown">
@@ -29,9 +29,8 @@
                   <li><a class="nav-link" href="{{ route('menu.index') }}">Menu</a></li>
                 </ul>
               </li>
-            @endif --}}
+            @endif
             
           </ul>
         </aside>
-        {{ Auth::user() }}
       </div>
