@@ -89,4 +89,18 @@ class NotificationController extends Controller
     {
         //
     }
+
+    public function read(Request $request, Notification $notification)
+    {
+        $request->validate([
+            'id' => 'required',
+        ]);
+
+        $notification->update([
+            'id'        => $request->id,
+            'is_read'   => 1,
+            'readed_at' => date('Y-m-d H:m:s')
+        ]);
+        return redirect()->route('dashboard');
+    }
 }

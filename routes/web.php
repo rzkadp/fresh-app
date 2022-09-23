@@ -36,3 +36,4 @@ Route::resource('/inventory', 'InventoryController');
 Route::resource('/request', 'RequestController');
 Route::resource('/menu', 'MenuController');
 Route::resource('/notification', 'NotificationController');
+Route::put('/notification/{notification}/read', 'NotificationController@read')->name('notification.read');

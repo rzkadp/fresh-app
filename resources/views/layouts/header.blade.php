@@ -137,7 +137,7 @@
           </li>
           <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep"><i class="far fa-bell"></i></a>
           <?php
-              $notification = DB::table('notifications')->get();
+              $notification = DB::table('notifications')->where('is_read', 0)->orderBy('created_at', 'desc')->get();
           ?>
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
               <div class="dropdown-header">Notifications
@@ -155,15 +155,22 @@
                   $interval = $datetime1->diff($datetime2);
                   $days = $interval->format('%a');
                  ?>
-                  <a href="#" class="dropdown-item dropdown-item-unread">
-                    <div class="dropdown-item-icon bg-primary text-white">
-                      <i class="fas fa-code"></i>
-                    </div>
-                    <div class="dropdown-item-desc">
-                      <?= $n->title ?>
-                      <div class="time text-primary">{{ $n->created_at }} </div>
-                    </div>
-                  </a>
+                  <form method="POST" action="{{ route('notification.read', $n->id) }}">
+                    @csrf()
+                    @method('PUT')
+                    <button type="submit" class="dropdown-item dropdown-item-unread">
+                    {{-- <a href="#" class="dropdown-item dropdown-item-unread"> --}}
+                      <div class="dropdown-item-icon bg-primary text-white">
+                        <i class="fas fa-code"></i>
+                      </div>
+                      <div class="dropdown-item-desc">
+                        <?= $n->title ?>
+                        <div class="time text-primary">{{ $n->created_at }} </div>
+                        <input type="hidden" name="id" id="id" value="{{ $n->id }}">
+                      </div>
+                    {{-- </a> --}}
+                    </button>
+                  </form>
                 @endforeach
               </div>
               <div class="dropdown-footer text-center">
