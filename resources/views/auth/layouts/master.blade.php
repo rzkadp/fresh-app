@@ -31,7 +31,12 @@
 
 <body>
   <div id="app">
-    @yield('content')
+      <section class="section">
+        <div class="container mt-5">
+          @include('auth.layouts.flash')
+          @yield('content')
+        </div>
+      </section>
   </div>
 
   @stack('before-scripts')
