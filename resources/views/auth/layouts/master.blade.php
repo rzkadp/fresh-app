@@ -33,7 +33,6 @@
   <div id="app">
       <section class="section">
         <div class="container mt-5">
-          @include('auth.layouts.flash')
           @yield('content')
         </div>
       </section>
