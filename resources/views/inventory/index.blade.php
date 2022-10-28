@@ -13,7 +13,7 @@
                 <th>Item Code</th>
                 <th>Description</th>
                 <th>Status</th>
-                <th>Imported Date</th>
+                <th>Date Import</th>
                 <th>Action</th>
             </tr>
         </thead>
